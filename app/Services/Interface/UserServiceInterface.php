@@ -4,7 +4,6 @@ namespace App\Services\Interface;
 
 interface UserServiceInterface
 {
-
     /**
      *
      * @return void
