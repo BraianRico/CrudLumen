@@ -4,6 +4,7 @@ namespace App\Services\Implementation;
 
 use App\Models\User;
 use App\Services\Interface\UserServiceInterface;
+use Illuminate\Support\Facades\Hash;
 
 class UserServiceImpl implements UserServiceInterface
 {
@@ -20,9 +21,16 @@ class UserServiceImpl implements UserServiceInterface
     function SearchUser(int $id)
     {
     }
+
+    /**
+     * Create User
+     */
     function createUser(array $user)
     {
+        $user['password'] = Hash::make($user['password']);
+        $this->model->create($user);
     }
+
     function updateUser(array $user, int $id)
     {
     }
