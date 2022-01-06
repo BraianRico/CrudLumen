@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\Implementation\UserServiceImpl;
 use Illuminate\Http\Request;
+use Users;
 
 class UserController extends Controller
 {
@@ -35,5 +36,10 @@ class UserController extends Controller
     function listUser()
     {
         return response($this->userService->listUser());
+    }
+
+    function searchUser(int $id)
+    {
+        return response($this->userService->searchUser($id));
     }
 }

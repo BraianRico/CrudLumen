@@ -22,8 +22,13 @@ class UserServiceImpl implements UserServiceInterface
     {
         return $this->model->get();
     }
+
+    /**
+     * SearchUser
+     */
     function SearchUser(int $id)
     {
+        return $this->model::where('id', $id)->get();
     }
 
     /**
