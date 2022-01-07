@@ -24,7 +24,7 @@ class UserServiceImpl implements UserServiceInterface
     }
 
     /**
-     * SearchUser
+     * Search User
      */
     function SearchUser(int $id)
     {
@@ -40,8 +40,16 @@ class UserServiceImpl implements UserServiceInterface
         $this->model->create($user);
     }
 
+    /**
+     * Updata User
+     */
     function updateUser(array $user, int $id)
     {
+        $user['password'] = Hash::make($user['password']);
+        $this->model->where('id', $id)
+            ->first()
+            ->fill($user)
+            ->save();
     }
     function deleteUser(int $id)
     {
