@@ -49,4 +49,10 @@ class UserController extends Controller
         $this->userService->updateUser($this->request->all(), $id);
         return $response;
     }
+
+    function deleteUser(int $id)
+    {
+        $this->userService->deleteUser($id);
+        return response("", 204);
+    }
 }

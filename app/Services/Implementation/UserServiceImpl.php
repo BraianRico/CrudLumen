@@ -20,7 +20,7 @@ class UserServiceImpl implements UserServiceInterface
      */
     function listUser()
     {
-        return $this->model->get();
+        return $this->model->withTrashed()->get();
     }
 
     /**
@@ -28,7 +28,7 @@ class UserServiceImpl implements UserServiceInterface
      */
     function SearchUser(int $id)
     {
-        return $this->model::where('id', $id)->get();
+        return $this->model::where('id', $id)->withTrashed()->get();
     }
 
     /**
@@ -51,8 +51,16 @@ class UserServiceImpl implements UserServiceInterface
             ->fill($user)
             ->save();
     }
+
+    /**
+     * Delete User
+     */
     function deleteUser(int $id)
     {
+        $user = $this->model->find($id);
+        if ($user != null) {
+            $user->delete();
+        }
     }
     function restoreUser(int $id)
     {
