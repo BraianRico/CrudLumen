@@ -62,7 +62,14 @@ class UserServiceImpl implements UserServiceInterface
             $user->delete();
         }
     }
+    /**
+     * Restore User
+     */
     function restoreUser(int $id)
     {
+        $user = $this->model->withTrashed()->find($id);
+        if ($user != null) {
+            $user->restore();
+        }
     }
 }

@@ -24,5 +24,6 @@ $router->group(["prefix" => "/v1"], function () use ($router) {
         $router->get('/list/{id}', 'UserController@searchUser');
         $router->put('/{id}', 'UserController@updateUser');
         $router->delete('/{id}', 'UserController@deleteUser');
+        $router->get('/{id}/restore', 'UserController@restoreUser');
     });
 });
